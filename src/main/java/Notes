@@ -1,0 +1,8 @@
+Cyclic barrier- my stack overflow question.
+Note: sometime u may get NPE, reason for that, it if thread is not started yet but try to work on thread in some other class,
+Look the stackOverFlow question to know what i mean, CyclicBarrier make sure all threads are on same level.
+
+TODO::::::
+1. synchronized block vs Reentrant lock
+2. Executable service
+3. Semaphore concepts
