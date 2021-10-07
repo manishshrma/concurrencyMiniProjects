@@ -33,6 +33,5 @@ public class ThreadDemo {
                 System.out.println("child thread " + x);
             });
         });
-
     }
 }
