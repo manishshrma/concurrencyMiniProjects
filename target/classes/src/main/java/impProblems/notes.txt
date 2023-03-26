@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/3403030/java-synchronized-blocks  ==> VIMP LINK for sync
-https://stackoverflow.com/questions/66607441/multiple-thread-failed-to-execute-the-nonsynchronized-code-in-java/66607912#66607912
