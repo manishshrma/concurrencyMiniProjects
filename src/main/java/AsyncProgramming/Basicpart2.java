@@ -1,45 +1,42 @@
 package AsyncProgramming;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 
-public class BasicPart1 {
+public class Basicpart2 {
 
-    public static ForkJoinPool forkJoinPool=new ForkJoinPool(10); // You can use your own thread pool to execute
-    // async calls,
 
-    public static CompletableFuture<Integer> create() {
-        System.out.println("create method " + Thread.currentThread());
-        // this supplyAsync method call the compute() in asynch manner or in seperate thread (from common thread pool)
-        return CompletableFuture.supplyAsync(() -> {
-            try {
-                return compute();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
+//    ---X---F---X-----F-------X-----F   (PATH 1) resolve, pending
+//             \
+//              \
+//    -----E----F----E------F--E------   (PATH 2) error
+
+
+    public static int handleException(Throwable throwable) {
+        System.out.println("ERROR: " + throwable);
+        return 100;  // recover from exception so back to path 1
     }
 
-    public static int compute() throws InterruptedException {
-//        Thread.sleep(3000);
-        System.out.println("compute Method:: " + Thread.currentThread());
-        return 2;
+    // talk about pipeline
+    public static void process(CompletableFuture<Integer> future) throws ExecutionException, InterruptedException {
+        future.thenApply(data -> data * 2)
+                .exceptionally(throwable -> handleException(throwable))
+                .thenApply(data -> data + 1)
+                .thenAccept(System.out::println);
+
+        System.out.println(future.get());
     }
 
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> future = new CompletableFuture<>();
 
-    public static void main(String[] args) {
-        System.out.println("main method ::  " + Thread.currentThread());
+        process(future); // this method create a pipeline
+        // think as you call webservice of google asking for stock price by giving some input which you have not yet,
+        // but you at least created a pipeline what to do when data is available with you.
 
-        // interesting thing::::
-        // if create() method completed, then thenAccept() will perform the printIt() on the same main thread.
-        // think, if create() method that get executed on another thread but that thread performed it's task.
-        // so why that thread need to wait.
-        create().thenAccept(data -> printIt(data));
+//        future.complete(2);  // you pass the data to the pipeline you created.
+        future.completeExceptionally(new RuntimeException("Something went Wrong"));
     }
 
-    private static void printIt(int data) {
-        System.out.println("PrintIt method :: " + Thread.currentThread());
-        System.out.println(data);
-    }
 }
