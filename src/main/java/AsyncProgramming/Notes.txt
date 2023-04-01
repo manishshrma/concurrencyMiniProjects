@@ -1,2 +1,11 @@
 ###############################################ASYNCHRONOUS PROGRAMMING#####################################
+There are lots of methods in CompletableFuture.
 
+foreach accept Conumser -----------------  CompletableFuture have thenAccept() method which is similar to foreach,
+but why different name, cause foreach accept zero,one or many values. while in thenAccept(), Completable Future at most
+return one value which is response or error.
+
+Similary for others...
+
+Map us apply()  while  CF use thenAccept()
+        reduce() while CF use thenCombine()
