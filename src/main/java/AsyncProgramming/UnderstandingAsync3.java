@@ -59,7 +59,6 @@ public class UnderstandingAsync3 {
         }
         return res;
     }
-
     public static ResponseHandler partialResponseHandler(CompletableFuture<String> res1, CompletableFuture<String> res2, CompletableFuture<String> res3, CompletableFuture<Void> res) {
         AtomicBoolean flag1 = new AtomicBoolean(false);
         AtomicBoolean flag2 = new AtomicBoolean(false);
@@ -106,6 +105,8 @@ public class UnderstandingAsync3 {
         long end = System.nanoTime();
         long executionTime = (end - start) / 1000000;
         System.out.println("Execution time is " + executionTime + " millisecond");
+
+        System.out.println("test");
 
     }
 }
