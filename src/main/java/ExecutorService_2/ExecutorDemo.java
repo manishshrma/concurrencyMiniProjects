@@ -23,6 +23,9 @@ public class ExecutorDemo {
         for (SumJob job : jobs) {
             //Future hold the return type from service submit method
             Future r= service.submit(job);
+            // all the jobs, getting executed in seperate thread.
+            // but as soon as main thread encounter the .get(). then immediately it get blocked,
+            // and wait for the response to come before moving furthre.
             System.out.println("--------------------------");
             System.out.println(r.get());
         }
