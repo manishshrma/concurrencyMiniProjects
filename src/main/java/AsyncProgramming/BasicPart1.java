@@ -22,7 +22,7 @@ public class BasicPart1 {
     }
 
     public static int compute() throws InterruptedException {
-//        Thread.sleep(3000);
+        Thread.sleep(3000);
         System.out.println("compute Method:: " + Thread.currentThread());
         return 2;
     }
@@ -30,6 +30,13 @@ public class BasicPart1 {
 
     public static void main(String[] args) {
         System.out.println("main method ::  " + Thread.currentThread());
+         //:::::::::::::::::::::VIMP::::::::::::::::::::::::::::::
+        // if main method complete before the completion of the asynchronous method. then,
+        // in order to  execute the async methods, you have to specify the timeout, thus if asynch,
+        // method doesn't get completed within the timeline, it will throw timeout error.
+
+
+
 
         // interesting thing::::
         // if create() method completed, then thenAccept() will perform the printIt() on the same main thread.
