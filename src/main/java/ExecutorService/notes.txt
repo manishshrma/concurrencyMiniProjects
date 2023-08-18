@@ -25,3 +25,5 @@ In every part of the code which will executed by the thread.
 EXAMPLE
 For each request, require separate the unique transaction id. This functionality can be achieved by the thread local.
 Once the thread enter into the dead state, all its local variable by default eligible for garbage collection
+
+CompletableFuture runAsync vs supplyAsync, when to choose one over the other?
