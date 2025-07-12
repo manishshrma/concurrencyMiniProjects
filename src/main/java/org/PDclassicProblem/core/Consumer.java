@@ -1,6 +1,5 @@
-package org.PDclassicProblem;
+package org.PDclassicProblem.core;
 
-import java.util.LinkedList;
 import java.util.List;
 
 //consumer thread

@@ -1,8 +1,7 @@
-package org.PDclassicProblem;
+package org.PDclassicProblem.core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletionService;
 
 public class MainThread {
 

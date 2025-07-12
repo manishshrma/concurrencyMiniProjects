@@ -1,4 +1,4 @@
-package org.PDclassicProblem;
+package org.PDclassicProblem.core;
 
 import java.util.List;
 
